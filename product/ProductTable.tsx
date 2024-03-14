@@ -27,11 +27,14 @@ let typeStyle: TextStyle = {width: 50, fontWeight: 'bold'};
 function ProductTable(list: ProductTableProps) {
   let products = list.products;
   const rows: any = [];
-
+  let categoryArr: string[] = [];
   products.forEach((product, index) => {
-    rows.push(
-      <Category category={product.category} key={product.category + index} />,
-    );
+    if (!categoryArr.includes(product.category)) {
+      rows.push(
+        <Category category={product.category} key={product.category + index} />,
+      );
+      categoryArr.push(product.category);
+    }
     rows.push(<ProductItem product={product} key={product.name + index} />);
   });
 
