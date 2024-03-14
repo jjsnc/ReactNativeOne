@@ -20,10 +20,10 @@ import {
 import {
   Colors,
   DebugInstructions,
-  Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import ProductTable from './product/ProductTable';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -54,6 +54,14 @@ function Section({children, title}: SectionProps): React.JSX.Element {
     </View>
   );
 }
+const PRODUCTS = [
+  {category: '水果', price: '￥1', name: 'PingGuo'},
+  {category: '水果', price: '￥1', name: 'HuoLongGuo'},
+  {category: '水果', price: '￥2', name: 'BaiXiangGuo'},
+  {category: '蔬菜', price: '￥2', name: 'BoCai'},
+  {category: '蔬菜', price: '￥4', name: 'NanGua'},
+  {category: '蔬菜', price: '￥1', name: 'WanDou'},
+];
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -71,7 +79,6 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
@@ -90,6 +97,9 @@ function App(): React.JSX.Element {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
+        </View>
+        <View>
+          <ProductTable products={PRODUCTS} />
         </View>
       </ScrollView>
     </SafeAreaView>
