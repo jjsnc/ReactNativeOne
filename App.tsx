@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -15,6 +15,7 @@ import {
   Text,
   useColorScheme,
   View,
+  ViewStyle,
 } from 'react-native';
 
 import {
@@ -23,8 +24,8 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import ProductTable from './product/ProductTable';
-
+import ProductTable from './src/components/product/ProductTable';
+import MadInput from './src/components/input/input';
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -65,10 +66,15 @@ const PRODUCTS = [
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  const [text, setText] = useState('');
 
+  const handleTextChange = (newText: string) => {
+    setText(newText);
+  };
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+  const inputStyle: ViewStyle = {paddingLeft: 10, paddingRight: 10};
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -79,6 +85,16 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
+        <View>
+          <Text>Input Value: {text}</Text>
+        </View>
+        <View style={inputStyle}>
+          <MadInput
+            placeholder="Enter your text here"
+            value={text}
+            onChangeText={handleTextChange}
+          />
+        </View>
         <View>
           <ProductTable products={PRODUCTS} />
         </View>
