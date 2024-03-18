@@ -27,6 +27,8 @@ import {
 import ProductTable from './src/components/product/ProductTable';
 import MadInput from './src/components/input/input';
 import MadSwitch from './src/components/switch/switch';
+import WaterfallLayout from './src/components/waterfallLayout/waterfallLayout';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -118,6 +120,9 @@ function App(): React.JSX.Element {
         </View>
         <View>
           <ProductTable products={PRODUCTS} />
+        </View>
+        <View>
+          <WaterfallLayout list={PRODUCTS} />
         </View>
         <View
           style={{
