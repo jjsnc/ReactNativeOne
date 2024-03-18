@@ -28,6 +28,9 @@ import ProductTable from './src/components/product/ProductTable';
 import MadInput from './src/components/input/input';
 import MadSwitch from './src/components/switch/switch';
 import WaterfallLayout from './src/components/waterfallLayout/waterfallLayout';
+// 设置全局默认样式
+(Text as any).defaultProps = (Text as any).defaultProps || {};
+(Text as any).defaultProps.style = {fontFamily: 'Arial', fontSize: 14};
 
 type SectionProps = PropsWithChildren<{
   title: string;
