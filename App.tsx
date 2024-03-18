@@ -110,7 +110,11 @@ function App(): React.JSX.Element {
           />
         </View>
         <View style={switchStyle}>
-          <MadSwitch toggleSwitch={handleSwitchChange} value={switchValue} />
+          <MadSwitch
+            label="只显示有库存的商品"
+            toggleSwitch={handleSwitchChange}
+            value={switchValue}
+          />
         </View>
         <View>
           <ProductTable products={PRODUCTS} />
