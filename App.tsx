@@ -26,6 +26,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import ProductTable from './src/components/product/ProductTable';
 import MadInput from './src/components/input/input';
+import MadSwitch from './src/components/switch/switch';
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -75,6 +76,18 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
   const inputStyle: ViewStyle = {paddingLeft: 10, paddingRight: 10};
+  const switchStyle: ViewStyle = {
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginTop: 10,
+    marginBottom: 10,
+  };
+
+  const [switchValue, setSwitchValue] = useState(false);
+
+  const handleSwitchChange = (newValue: boolean) => {
+    setSwitchValue(newValue);
+  };
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -88,12 +101,16 @@ function App(): React.JSX.Element {
         <View>
           <Text>Input Value: {text}</Text>
         </View>
+
         <View style={inputStyle}>
           <MadInput
             placeholder="Enter your text here"
             value={text}
             onChangeText={handleTextChange}
           />
+        </View>
+        <View style={switchStyle}>
+          <MadSwitch toggleSwitch={handleSwitchChange} value={switchValue} />
         </View>
         <View>
           <ProductTable products={PRODUCTS} />
