@@ -28,6 +28,7 @@ import ProductTable from './src/components/product/ProductTable';
 import MadInput from './src/components/input/input';
 import MadSwitch from './src/components/switch/switch';
 import WaterfallLayout from './src/components/waterfallLayout/waterfallLayout';
+import StateProductTable from './src/views/state/ProductTable';
 // 设置全局默认样式
 (Text as any).defaultProps = (Text as any).defaultProps || {};
 (Text as any).defaultProps.style = {fontFamily: 'Arial', fontSize: 14};
@@ -103,6 +104,9 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
+        <View>
+          <StateProductTable />
+        </View>
         <View>
           <Text>Input Value: {text}</Text>
         </View>
