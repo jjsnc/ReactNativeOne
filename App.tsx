@@ -30,6 +30,7 @@ import MadSwitch from './src/components/switch/switch';
 import WaterfallLayout from './src/components/waterfallLayout/waterfallLayout';
 import StateProductTable from './src/views/state/ProductTable';
 import MadImages from './src/views/image/index';
+import MadTextInput from './src/views/textInput/index';
 // 设置全局默认样式
 (Text as any).defaultProps = (Text as any).defaultProps || {};
 (Text as any).defaultProps.style = {fontFamily: 'Arial', fontSize: 14};
@@ -105,7 +106,9 @@ function App(): React.JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <MadImages />
+        <View>
+          <MadTextInput />
+        </View>
         <View>
           <StateProductTable />
         </View>
@@ -152,6 +155,7 @@ function App(): React.JSX.Element {
           </Section>
           <LearnMoreLinks />
         </View>
+        <MadImages />
       </ScrollView>
     </SafeAreaView>
   );
